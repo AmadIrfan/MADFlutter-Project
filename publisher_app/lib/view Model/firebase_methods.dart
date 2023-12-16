@@ -11,7 +11,6 @@ import 'package:publisher_app/models/publisher_model.dart';
 class FireBaseMethods with ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
   Future<String> uploadPost(String path, String name, File file) async {

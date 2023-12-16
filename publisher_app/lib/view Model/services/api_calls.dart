@@ -283,17 +283,24 @@ class APICalls extends ChangeNotifier {
           'Content-Type': 'application/json',
         },
       );
+
       if (response.statusCode == 200) {
         final i = json.decode(response.body.toString());
-        data['inactive'] = double.parse(i['data']['inactive'].toString());
-        data['active'] = double.parse(i['data']['active'].toString());
-        data['title'] = double.parse(i['data']['total'].toString());
+        data['inactive'] = i['data']['inactive'] == null
+            ? 0.0
+            : double.parse(i['data']['inactive'].toString());
+        data['active'] = i['data']['active'] == null
+            ? 0.0
+            : double.parse(i['data']['active'].toString());
+        data['total'] = i['data']['total'] == null
+            ? 0.0
+            : double.parse(i['data']['total'].toString());
         return data;
       }
       return {
         'inactive': 0.0,
         'active': 0.0,
-        'title': 0.0,
+        'total': 0.0,
       };
     } catch (e) {
       rethrow;

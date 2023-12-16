@@ -19,7 +19,8 @@ class Login extends StatefulWidget {
   @override
   State<Login> createState() => _LoginState();
 }
-// Login screen 
+
+// Login screen
 class _LoginState extends State<Login> {
   bool isLoading = false;
   final _key = GlobalKey<FormState>();

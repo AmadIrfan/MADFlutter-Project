@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use
 
 import 'dart:io';
 
@@ -201,7 +201,6 @@ class _UserUpdateScreenState extends State<UserUpdateScreen> {
                   return null;
                 },
                 onSave: (v) {
-                  print(v);
                   user = UserModel(
                     id: user!.id,
                     name: user!.name!,

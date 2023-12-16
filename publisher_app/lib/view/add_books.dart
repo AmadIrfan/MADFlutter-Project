@@ -135,7 +135,7 @@ class _AddBooksState extends State<AddBooks> {
                   children: [
                     CustomTextField(
                       init: bv?.name ?? "",
-                      text: 'Enter publisher name ',
+                      text: 'Enter Book name ',
                       thisNode: nameNode,
                       onSubmit: (v) {
                         FocusScope.of(context).requestFocus(summeryNode);

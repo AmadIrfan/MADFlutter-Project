@@ -295,7 +295,7 @@ class _AddPublisherState extends State<AddPublisher> {
             CustomButton(
               isLoading: isLoading,
               focusNode: btn2Node,
-              text: 'Sign up',
+              text: 'Save Publisher',
               onClick: () {
                 onSave();
               },
@@ -307,8 +307,8 @@ class _AddPublisherState extends State<AddPublisher> {
   }
 
   void onSave() {
-    if (_key.currentState!.validate()) {
-      try {
+    try {
+      if (_key.currentState!.validate()) {
         setState(() {
           isLoading = true;
         });
@@ -325,14 +325,14 @@ class _AddPublisherState extends State<AddPublisher> {
         setState(() {
           isLoading = false;
         });
-      } catch (e) {
-        setState(() {
-          isLoading = false;
-        });
-        Utils().showToast(
-          e.toString(),
-        );
       }
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      Utils().showToast(
+        e.toString(),
+      );
     }
   }
 

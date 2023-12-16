@@ -1,11 +1,16 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
 
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 import 'package:publisher_app/view/home_screen.dart';
+
+import '../res/routes/route_name.dart';
+import '../utils/utils.dart';
+import '../view Model/firebase_methods.dart';
 
 class InitScreens extends StatefulWidget {
   const InitScreens({Key? key}) : super(key: key);
@@ -31,8 +36,7 @@ class _InitScreensState extends State<InitScreens> {
   void _startStream() {
     _getUserStream(_auth.currentUser?.uid ?? '').listen((snapshot) {
       _streamController.add(snapshot);
-    }, onError: (error) {
-    });
+    }, onError: (error) {});
   }
 
   Stream<DocumentSnapshot<Map<String, dynamic>>> _getUserStream(String userId) {
@@ -56,11 +60,44 @@ class _InitScreensState extends State<InitScreens> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
-          return Center(child: Text(snapshot.error.toString()));
+          return Center(
+            child: Text(
+              snapshot.error.toString(),
+            ),
+          );
         } else if (snapshot.data == null || snapshot.data!.data() == null) {
-          return const Center(child: Text('No data available'));
+          return Scaffold(
+            body: SafeArea(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('No data available'),
+                    ElevatedButton(
+                      onPressed: () async {
+                        try {
+                          await Provider.of<FireBaseMethods>(context,
+                                  listen: false)
+                              .logOut();
+                          Utils().showToast('SignOut successfully');
+                          Navigator.pushReplacementNamed(
+                            context,
+                            RouteName.start,
+                          );
+                        } catch (e) {
+                          Utils().showToast(e);
+                        }
+                      },
+                      child: const Text('Log Out'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
         } else {
           bool isActive = snapshot.data!.data()!['active'];
+          print(isActive);
           if (isActive) {
             return const MyHomePage();
           } else {
@@ -81,8 +118,29 @@ class InactiveScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Inactive Screen'),
       ),
-      body: const Center(
-        child: Text('Sorry, your account is inactive.'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Sorry, your account is inactive.'),
+            ElevatedButton(
+              onPressed: () async {
+                try {
+                  await Provider.of<FireBaseMethods>(context, listen: false)
+                      .logOut();
+                  Utils().showToast('SignOut successfully');
+                  Navigator.pushReplacementNamed(
+                    context,
+                    RouteName.start,
+                  );
+                } catch (e) {
+                  Utils().showToast(e);
+                }
+              },
+              child: const Text('Log Out'),
+            ),
+          ],
+        ),
       ),
     );
   }

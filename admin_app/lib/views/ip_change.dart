@@ -1,12 +1,10 @@
 import 'package:admin_app/views/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:provider/provider.dart';
 
 import '../../res/buttons/custom_button.dart';
 import '../../res/colors.dart';
 import '../../res/text_field/custom_text_field.dart';
-import '../data/local services/local_storage.dart';
 import '../data/services/api_route.dart';
 import '../utils/utils.dart';
 
@@ -100,9 +98,6 @@ class _ChangeIpAddressState extends State<ChangeIpAddress> {
         setState(() {
           url = address;
         });
-        await Provider.of<LocalStorage>(context, listen: false)
-            .setServer(address);
-        Utils().showToast('Successfully Updates');
       }
     } catch (e) {
       Utils().showToast(e.toString());

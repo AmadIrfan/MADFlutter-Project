@@ -3,12 +3,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../res/routes/route_name.dart';
-import '../view Model/local storage/local_storage.dart';
-import '../view Model/services/end_points.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -42,13 +39,13 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   getIpAddress() async {
-    String? address =
-        await Provider.of<LocalStorage>(context, listen: false).getServer();
-    if (address != null) {
-      url = address;
-    } else {
-      url = url;
-    }
+    // String? address =
+    //     await Provider.of<LocalStorage>(context, listen: false).getServer();
+    // if (address != null) {
+    //   url = address;
+    // } else {
+    //   url = url;
+    // }
   }
 
   // Function to check user's "active" status in Firestore

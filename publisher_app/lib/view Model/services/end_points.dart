@@ -1,7 +1,4 @@
-// const url = 'http://enchanting-massive-pocket.glitch.me';
-// String url = 'http://192.168.0.107:3000';
-String url = 'http://192.168.0.107:3000';
-
+String url = 'https://mangas-server-app.azurewebsites.net';
 const author = '/author';
 const book = '/book';
 const chapter = '/chapter';

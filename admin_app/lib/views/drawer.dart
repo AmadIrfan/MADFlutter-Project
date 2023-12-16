@@ -27,6 +27,8 @@ class _MyDrawerState extends State<MyDrawer> {
     UserProvider userProvider = Provider.of<UserProvider>(
       context,
     );
+
+    print(userProvider.getUser!.profileImage.toString());
     return SafeArea(
       child: Drawer(
         width: double.infinity,
@@ -48,7 +50,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       )
                     : CircleAvatar(
                         radius: 30,
-                        backgroundColor: Colors.amber,
+                        // backgroundColor: Colors.green,
                         backgroundImage: NetworkImage(
                           userProvider.getUser!.profileImage.toString(),
                         ),
@@ -99,7 +101,7 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
               AppListTile(
                 onTap: () {
-                  Navigator.pushReplacementNamed(
+                  Navigator.pushNamed(
                     context,
                     RouteName.books,
                   );
@@ -151,15 +153,15 @@ class _MyDrawerState extends State<MyDrawer> {
                 },
                 title: 'Edit Profile',
               ),
-              AppListTile(
-                onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    RouteName.ipChange,
-                  );
-                },
-                title: 'Change Server Address',
-              ),
+              // AppListTile(
+              //   onTap: () {
+              //     Navigator.pushNamed(
+              //       context,
+              //       RouteName.ipChange,
+              //     );
+              //   },
+              //   title: 'Change Server Address',
+              // ),
               AppListTile(
                 onTap: () async {
                   await FirebaseAuth.instance.signOut();

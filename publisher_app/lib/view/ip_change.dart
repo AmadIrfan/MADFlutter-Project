@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:provider/provider.dart';
 import 'package:publisher_app/view%20Model/services/end_points.dart';
 import 'package:publisher_app/view/drawer.dart';
 import '../res/buttons/custom_button.dart';
@@ -8,7 +7,6 @@ import '../res/colors.dart';
 import '../res/text_field/custom_text_field.dart';
 
 import '../utils/utils.dart';
-import '../view Model/local storage/local_storage.dart';
 
 class ChangeIpAddress extends StatefulWidget {
   const ChangeIpAddress({super.key});
@@ -99,8 +97,8 @@ class _ChangeIpAddressState extends State<ChangeIpAddress> {
         setState(() {
           url = address;
         });
-        await Provider.of<LocalStorage>(context, listen: false)
-            .setServer(address);
+        // await Provider.of<LocalStorage>(context, listen: false)
+        //     .setServer(address);
         Utils().showToast('Successfully Updates');
       }
     } catch (e) {

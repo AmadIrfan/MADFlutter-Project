@@ -67,7 +67,6 @@ class _InitScreensState extends State<InitScreens> {
           );
         } else {
           bool isActive = snapshot.data!.data()!['active'];
-          print(isActive);
           if (isActive) {
             return const MyHomePage();
           } else {

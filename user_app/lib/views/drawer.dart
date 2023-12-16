@@ -1,9 +1,13 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:user_app/res/colors.dart';
 import 'package:gap/gap.dart';
 import 'package:user_app/res/list_tile.dart';
+import 'package:user_app/utils/utils.dart';
 import '../res/routes/route_name.dart';
 import '../view model/provider/user_provider.dart';
 
@@ -16,6 +20,8 @@ class MyDrawer extends StatefulWidget {
 
 class _MyDrawerState extends State<MyDrawer> {
   int index = 0;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     UserProvider userProvider = Provider.of<UserProvider>(
@@ -101,16 +107,23 @@ class _MyDrawerState extends State<MyDrawer> {
                 },
               ),
               AppListTile(
-                  title: 'Change Ip Address',
-                  onClick: () {
-                    Navigator.pushNamed(
-                      context,
-                      RouteName.ipPage,
-                    );
-                  }),
-              AppListTile(
                 title: 'SignOut',
-                onClick: () {},
+                onClick: () async {
+                  try {
+                    await _auth.signOut();
+                    Utils().showToast(
+                      'Sign out Successfully',
+                    );
+                  } catch (e) {
+                    Utils().showToast(
+                      e.toString(),
+                    );
+                  }
+                  Navigator.pushReplacementNamed(
+                    context,
+                    RouteName.start,
+                  );
+                },
               ),
               const Spacer(),
               Container(

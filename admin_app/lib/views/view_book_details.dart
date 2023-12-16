@@ -21,6 +21,7 @@ class _ViewBookDetailedState extends State<ViewBookDetailed> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.green,
           centerTitle: true,
           title: Text(
             bVal!.name.toString(),

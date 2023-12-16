@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/1f2b9cc0-1eb6-44de-b531-6619bfe5a25d/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/managas-app",
+    "appService.deploySubpath": "."
+}

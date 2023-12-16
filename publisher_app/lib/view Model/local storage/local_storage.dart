@@ -15,15 +15,15 @@ class LocalStorage with ChangeNotifier {
     return Publisher.fromJson(res!);
   }
 
-  Future<bool> setServer(String address) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    bool res = await sharedPreferences.setString('server', address);
-    return res;
-  }
+  // Future<bool> setServer(String address) async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   bool res = await sharedPreferences.setString('server', address);
+  //   return res;
+  // }
 
-  Future<String?> getServer() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    String? res = sharedPreferences.getString('server');
-    return res;
-  }
+  // Future<String?> getServer() async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   String? res = sharedPreferences.getString('server');
+  //   return res;
+  // }
 }

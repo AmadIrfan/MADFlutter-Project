@@ -9,7 +9,6 @@ import '../res/buttons/text_button.dart';
 import '../view model/firebase_methods.dart';
 import '../res/routes/route_name.dart';
 import '../res/text_field/custom_text_field.dart';
-import '../views/home_screen.dart';
 import '../res/colors.dart';
 import '../res/buttons/custom_logo_button.dart';
 import '../utils/utils.dart';

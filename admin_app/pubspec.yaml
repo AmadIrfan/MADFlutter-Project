@@ -38,6 +38,7 @@ dependencies:
   firebase_storage: ^11.4.1
   flutter:
     sdk: flutter
+  flutter_spinkit: ^5.2.0
   flutter_svg: ^2.0.8
   fluttertoast: ^8.2.2
   gap: ^3.0.1
@@ -51,10 +52,14 @@ dependencies:
   uuid: any
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.

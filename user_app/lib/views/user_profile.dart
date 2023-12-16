@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -5,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:user_app/res/routes/route_name.dart';
 import 'package:user_app/view%20model/provider/user_provider.dart';
 import 'package:user_app/views/drawer.dart';
-import 'package:user_app/widget/custum_tile.dart';
+import 'package:user_app/widget/custom_tile.dart';
 
 class UserProfile extends StatefulWidget {
   const UserProfile({super.key});

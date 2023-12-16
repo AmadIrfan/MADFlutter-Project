@@ -1,11 +1,8 @@
 import 'dart:async';
 
-import 'package:admin_app/data/services/api_route.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:provider/provider.dart';
 
-import '../data/local services/local_storage.dart';
 import '../res/routes/route_name.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -22,7 +19,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     checkPage();
-    getIpAddress();
     super.initState();
   }
 
@@ -37,16 +33,6 @@ class _SplashScreenState extends State<SplashScreen> {
         }
       },
     );
-  }
-
-  getIpAddress() async {
-    String? address =
-        await Provider.of<LocalStorage>(context, listen: false).getServer();
-    if (address != null) {
-      url = address;
-    } else {
-      url = url;
-    }
   }
 
   @override

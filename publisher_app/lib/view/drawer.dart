@@ -116,15 +116,15 @@ class _MyDrawerState extends State<MyDrawer> {
                 },
                 title: 'Books',
               ),
-              AppListTile(
-                onTap: () {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    RouteName.ipScreen,
-                  );
-                },
-                title: 'Change Server address',
-              ),
+              // AppListTile(
+              //   onTap: () {
+              //     Navigator.pushReplacementNamed(
+              //       context,
+              //       RouteName.ipScreen,
+              //     );
+              //   },
+              //   title: 'Change Server address',
+              // ),
               AppListTile(
                 onTap: () async {
                   await Provider.of<FireBaseMethods>(

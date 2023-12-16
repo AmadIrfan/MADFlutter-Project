@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:user_app/views/ip_chnage.dart';
 
 import '../../views/user_profile.dart';
 import '../../views/chapter.dart';
@@ -45,11 +44,6 @@ class MyRoute {
         return MaterialPageRoute(
           settings: settings,
           builder: (context) => const Login(),
-        );
-      case RouteName.ipPage:
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (context) => const ChangeIpAddress(),
         );
       case RouteName.viewBookChapter:
         return MaterialPageRoute(

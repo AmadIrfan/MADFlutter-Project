@@ -11,7 +11,7 @@ import '../data/firebase_methods.dart';
 import '../res/routes/route.dart';
 import '../data/provider/user_provider.dart';
 
-// import '../windows/splash_screen.dart';
+// import '../windows/spl ash_screen.dart';
 
 // main function
 void main() async {

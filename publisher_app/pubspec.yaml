@@ -56,16 +56,14 @@ dev_dependencies:
 flutter_launcher_icons:
   android: "managas_verse"
   ios: true
-  image_path: "assets/images/Group.png"
-  adaptive_icon_background: "#0000ff"
-  min_sdk_android: 21 # android min sdk min:16, default 21
+  image_path: "assets/images/logo.png"
   windows:
     generate: true
-    image_path: "assets/images/Group.png"
+    image_path: "assets/images/logo.png"
     icon_size: 48 # min:48, max:256, default: 48
   macos:
     generate: true
-    image_path: "assets/images/Group.png"
+    image_path: "assets/images/logo.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

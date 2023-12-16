@@ -55,6 +55,7 @@ class FireBaseMethods with ChangeNotifier {
         email: email,
       );
     } catch (e) {
+      print(e);
       rethrow;
     }
   }
@@ -213,6 +214,15 @@ class FireBaseMethods with ChangeNotifier {
       await _firestore.collection('admin').doc(u.id).update(u.toMap());
       UserModel user = await getUserData(_auth.currentUser!.uid);
       await LocalStorage().setUser(user);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> logOut() async {
+    try {
+      await _auth.signOut();
+      print('called');
     } catch (e) {
       rethrow;
     }

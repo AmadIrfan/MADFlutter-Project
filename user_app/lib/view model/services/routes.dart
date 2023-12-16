@@ -1,4 +1,4 @@
-String api = 'http://192.168.0.107:3000';
+String api = 'https://mangas-server-app.azurewebsites.net';
 const book = '/book';
 const chapter = '/chapter';
 const rating = '/rating';

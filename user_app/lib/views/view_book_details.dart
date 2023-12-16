@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import 'package:user_app/models/novel.dart';
-import 'package:user_app/models/user_model.dart';
 import 'package:user_app/res/buttons/custom_button.dart';
 import 'package:user_app/res/routes/route_name.dart';
 import 'package:user_app/utils/utils.dart';
