@@ -100,7 +100,7 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
               AppListTile(
                 onTap: () {
-                  Navigator.pushReplacementNamed(
+                  Navigator.pushNamed(
                     context,
                     RouteName.profile,
                   );
