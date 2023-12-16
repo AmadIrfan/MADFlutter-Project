@@ -16,21 +16,26 @@ class PIChart extends StatelessWidget {
   final Map<String, double> data;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SizedBox(
+      height: 400,
       child: Column(
         children: [
-          Text(
-            chartName!,
-            style: const TextStyle(
-              color: Color(0xFF243465),
-              fontSize: 20,
-              fontFamily: 'Nunito Sans',
-              fontWeight: FontWeight.w700,
-              height: 0,
-              letterSpacing: 0.28,
+          SizedBox(
+            height: 50,
+            child: Text(
+              chartName!,
+              style: const TextStyle(
+                color: Color(0xFF243465),
+                fontSize: 20,
+                fontFamily: 'Nunito Sans',
+                fontWeight: FontWeight.w700,
+                height: 0,
+                letterSpacing: 0.28,
+              ),
             ),
           ),
-          Expanded(
+          SizedBox(
+            height: 300,
             child: PieChart(
               dataMap: data,
               animationDuration: const Duration(milliseconds: 800),

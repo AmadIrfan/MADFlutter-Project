@@ -57,24 +57,20 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: MediaQuery.sizeOf(context).height * 0.37,
-              color: Colors.grey.shade200,
-              child: FutureBuilder(
-                  future: Provider.of<APICalls>(context, listen: false)
-                      .getBookStatistics(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    return PIChart(
-                      data: snapshot.data!,
-                      chartName: 'Books',
+            FutureBuilder(
+                future: Provider.of<APICalls>(context, listen: false)
+                    .getBookStatistics(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
                     );
-                  }),
-            ),
+                  }
+                  return PIChart(
+                    data: snapshot.data!,
+                    chartName: 'Books',
+                  );
+                }),
             SizedBox(
               height: 200,
               child: Row(
