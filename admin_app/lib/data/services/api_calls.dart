@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
+import '../../models/chapter_response.dart';
 import '/models/book.dart';
 import '/models/books_data.dart';
 import '../../models/author_response.dart';
@@ -57,6 +58,42 @@ class APICalls extends ChangeNotifier {
           body: json.encode({'isContinue': active}));
       AuthorResponse ar =
           AuthorResponse.fromJson(json.decode(response.body.toString()));
+      return ar;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> chapterStatusChange(bool active, String id) async {
+    try {
+      Response response = await put(
+        Uri.parse('$url$chapter$route$id'),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: json.encode({'active': active}),
+      );
+      // ChaptersResponse ar =
+      //     ChaptersResponse.fromJson(json.decode(response.body.toString()));
+      if (response.statusCode == 200) {
+      } else {
+        throw 'Error book Chapter is not active';
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<ChaptersResponse> getChapters(String id) async {
+    try {
+      Response response = await get(
+        Uri.parse('$url$chapter$route$id'),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+      ChaptersResponse ar =
+          ChaptersResponse.fromJson(json.decode(response.body.toString()));
       return ar;
     } catch (e) {
       rethrow;

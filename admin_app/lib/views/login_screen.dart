@@ -37,6 +37,7 @@ class _LoginState extends State<Login> {
   final TextStyle txtStyle = const TextStyle(
     fontWeight: FontWeight.w800,
   );
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -83,7 +84,9 @@ class _LoginState extends State<Login> {
                     image: AssetImage('assets/images/google.png'),
                   ),
                   text: 'Sign up with Google',
-                  onClick: () {},
+                  onClick: () async {
+                    await googleSignIn();
+                  },
                 ),
                 SizedBox(
                   height: size.height * 0.03,
@@ -263,7 +266,6 @@ class _LoginState extends State<Login> {
   void onSave() async {
     final firebaseProvider =
         Provider.of<FireBaseMethods>(context, listen: false);
-    final FirebaseAuth auth = FirebaseAuth.instance;
 
     if (_key.currentState!.validate()) {
       try {
@@ -299,5 +301,21 @@ class _LoginState extends State<Login> {
 
     bool result = emailRegExp.hasMatch(email);
     return result;
+  }
+
+  googleSignIn() async {
+    try {
+      await Provider.of<FireBaseMethods>(context, listen: false)
+          .signInWithGoogle();
+      Utils().showToast('Successfully Login');
+      if (auth.currentUser != null) {
+        Navigator.pushReplacementNamed(
+          context,
+          RouteName.init,
+        );
+      }
+    } catch (e) {
+      Utils().showToast(e.toString());
+    }
   }
 }

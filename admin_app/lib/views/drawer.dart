@@ -28,7 +28,6 @@ class _MyDrawerState extends State<MyDrawer> {
       context,
     );
 
-    print(userProvider.getUser!.profileImage.toString());
     return SafeArea(
       child: Drawer(
         width: double.infinity,

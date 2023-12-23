@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../models/publisher_model.dart';
@@ -55,7 +57,6 @@ class FireBaseMethods with ChangeNotifier {
         email: email,
       );
     } catch (e) {
-      print(e);
       rethrow;
     }
   }
@@ -219,10 +220,45 @@ class FireBaseMethods with ChangeNotifier {
     }
   }
 
+  Future<void> signInWithGoogle() async {
+    // Trigger the authentication flow
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      print(credential);
+      UserCredential user =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+      UserModel u = UserModel(
+        id: user.user!.uid,
+        name: user.user!.displayName,
+        email: user.user!.email,
+        role: 'admin',
+        profileImage: user.user!.photoURL,
+        phone: '',
+        createDate: DateTime.now(),
+        updateDate: DateTime.now(),
+      );
+      await _firestore.collection('admin').doc(user.user!.uid).set(
+            u.toMap(),
+          );
+      LocalStorage().setUser(u);
+
+      return;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> logOut() async {
     try {
       await _auth.signOut();
-      print('called');
     } catch (e) {
       rethrow;
     }

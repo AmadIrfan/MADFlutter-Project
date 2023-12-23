@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 300,
+                    height: 400,
                     child: PIChart(
                       chartName: 'User Registered in Last 24 hours',
                       data: userLogIn,
@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   const Divider(),
                   SizedBox(
-                    height: 300,
+                    height: 400,
                     child: PIChart(
                       chartName: 'Admins',
                       data: admin,
@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   const Divider(),
                   SizedBox(
-                    height: 300,
+                    height: 400,
                     child: PIChart(
                       chartName: 'Users',
                       data: user,
@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   const Divider(),
                   SizedBox(
-                    height: 300,
+                    height: 400,
                     child: PIChart(
                       chartName: 'publisher',
                       data: publisher,

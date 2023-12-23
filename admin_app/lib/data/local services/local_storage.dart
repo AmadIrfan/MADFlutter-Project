@@ -1,6 +1,6 @@
-import 'package:admin_app/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../models/user_model.dart';
 
 class LocalStorage with ChangeNotifier {
   Future<UserModel> getUser() async {

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +20,7 @@ class Signup extends StatefulWidget {
   State<Signup> createState() => _SignupState();
 }
 
-// register admin to use app s 
+// register admin to use app s
 class _SignupState extends State<Signup> {
   bool isLoading = false;
   final _key = GlobalKey<FormState>();
@@ -28,6 +30,7 @@ class _SignupState extends State<Signup> {
   final btn1Node = FocusNode();
   final btn2Node = FocusNode();
   final checkNode = FocusNode();
+  final FirebaseAuth auth = FirebaseAuth.instance;
   Map<String, String> _user = {
     'password': '',
     'email': '',
@@ -82,7 +85,9 @@ class _SignupState extends State<Signup> {
                     image: AssetImage('assets/images/google.png'),
                   ),
                   text: 'Sign up with Google',
-                  onClick: () {},
+                  onClick: () async {
+                    await googleSignIn();
+                  },
                 ),
                 SizedBox(
                   height: size.height * 0.03,
@@ -311,5 +316,21 @@ class _SignupState extends State<Signup> {
 
     bool result = emailRegExp.hasMatch(email);
     return result;
+  }
+
+  googleSignIn() async {
+    try {
+      await Provider.of<FireBaseMethods>(context, listen: false)
+          .signInWithGoogle();
+      Utils().showToast('Successfully Login');
+      if (auth.currentUser != null) {
+        Navigator.pushReplacementNamed(
+          context,
+          RouteName.init,
+        );
+      }
+    } catch (e) {
+      Utils().showToast(e.toString());
+    }
   }
 }
