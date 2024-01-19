@@ -12,6 +12,8 @@ class LocalStorage with ChangeNotifier {
   Future<bool> setUser(UserModel u) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     bool res = await sharedPreferences.setString('adminItem', u.toJson());
+    bool res1 = await sharedPreferences.remove('adminItem');
+    
     return res;
   }
 

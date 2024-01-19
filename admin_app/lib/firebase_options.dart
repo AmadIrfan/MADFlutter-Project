@@ -67,7 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '437349211477',
     projectId: 'manga-s-verse',
     storageBucket: 'manga-s-verse.appspot.com',
-    iosBundleId: 'com.example.adminApp',
+    iosBundleId: 'com.manga.adminApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -76,6 +76,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '437349211477',
     projectId: 'manga-s-verse',
     storageBucket: 'manga-s-verse.appspot.com',
-    iosBundleId: 'com.example.adminApp.RunnerTests',
+    iosBundleId: 'com.manga.adminApp.RunnerTests',
   );
 }

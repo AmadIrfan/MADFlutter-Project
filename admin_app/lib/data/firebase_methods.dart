@@ -1,8 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
+
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,8 +17,11 @@ import '../data/local%20services/local_storage.dart';
 // this class handle all firebase services
 class FireBaseMethods with ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   final FirebaseStorage _storage = FirebaseStorage.instance;
+
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
 // upload picture or files to firebase
   Future<String> uploadPost(String path, String name, File file) async {
     Reference ref = _storage.ref().child('$path/$name');
@@ -42,9 +48,10 @@ class FireBaseMethods with ChangeNotifier {
         createDate: DateTime.now(),
         updateDate: DateTime.now(),
       );
-      await _firestore.collection('admin').doc(userData.user!.uid).set(
-            u.toMap(),
-          );
+      await _firestore
+          .collection('admin')
+          .doc(userData.user!.uid)
+          .set({"name": "amad"});
     } catch (e) {
       rethrow;
     }
@@ -90,9 +97,13 @@ class FireBaseMethods with ChangeNotifier {
         createDate: DateTime.now(),
         updateDate: DateTime.now(),
       );
-      await _firestore.collection('publisher').doc(pubData.user!.uid).set(
-            pub.toMap(),
-          );
+      FirebaseFirestore.instance.collection('admin').doc('afsudhfuhsdufhu').set({'active':true});
+      FirebaseFirestore.instance.collection('admin').doc('afsudhfuhsdufhu').update({'active':true});
+      FirebaseFirestore.instance.collection('admin').doc('afsudhfuhsdufhu').get();
+      FirebaseFirestore.instance.collection('admin').snapshots();
+      FirebaseFirestore.instance.collection('admin').doc('afsudhfuhsdufhu').delete();      // await _firestore.collection('publisher').doc(pubData.user!.uid).set(
+      //       pub.toMap(),
+      //     );
     } catch (e) {
       rethrow;
     }
@@ -105,6 +116,7 @@ class FireBaseMethods with ChangeNotifier {
         email: user['email']!,
         password: user['password']!,
       );
+
       UserModel u = await getUserData(_auth.currentUser!.uid);
       LocalStorage().setUser(u);
     } catch (e) {
